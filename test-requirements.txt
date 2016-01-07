@@ -1,0 +1,6 @@
+flake8
+mock>=1.0
+coverage==3.7.1
+sqlalchemy
+unittest-xml-reporting
+requests-mock

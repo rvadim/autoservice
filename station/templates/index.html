@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <title>Car Clinic</title>
+    <link href="{% static 'components/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body ng-app="AutoService" ng-view>
+<script src="{% static 'components/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'components/angular/angular.min.js' %}"></script>
+<script src="{% static 'components/angular-route/angular-route.min.js' %}"></script>
+<script src="{% static 'components/angular-resource/angular-resource.min.js' %}"></script>
+<script src="{% static 'components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'components/angular-loading-bar/build/loading-bar.min.js' %}"></script>
+
+<script src="{% static 'app.js' %}"></script>
+<script src="{% static 'landing.js' %}"></script>
+</body>
+</html>
