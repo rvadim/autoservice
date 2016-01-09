@@ -196,3 +196,8 @@ p.copyright {
 .table-tr-selectable {
     cursor: pointer;
 }
+
+.time-marker {
+    padding: 2px;!important;
+    margin: 0px;!important;
+}

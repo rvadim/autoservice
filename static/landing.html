@@ -71,7 +71,20 @@
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
                 <h2 class="section-heading">Выбери удобное время</h2>
-                <p class="lead"></p>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="day in week">{{ day | date:'EEE' }}<br />{{ day | date:'dd.MM' }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ng-repeat="day in week">
+                                <div ng-if="day.getDay() !== 0" ng-repeat="time in times" class="time-marker alert alert-success">{{ time }}</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="col-lg-5 col-sm-pull-6  col-sm-6">
                 <!--img class="img-responsive" src="img/dog.png" alt=""-->
@@ -119,7 +132,6 @@
         </div>
     </div>
 </div>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
 
 <div id="ServiceSelectModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ServiceSelect">
     <div class="modal-dialog modal-lg">
