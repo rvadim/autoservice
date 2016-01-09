@@ -53,7 +53,9 @@
                 <div class="clearfix"></div>
                 <h2 class="section-heading">Выбери услуги</h2>
                 <p class="lead">Выберете список услуг из списка, после нажатия на кнопку "Выбрать"</p>
-                <p class="lead alert alert-success" ng-bind="selectedServices"></p>
+                <ul class="alert alert-warning">
+                    <li ng-repeat="item in selectedServices">{{ item.name }} : от {{ item.min_cost }} руб.</li>
+                </ul>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ServiceSelectModal">Выбрать</button>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
@@ -127,29 +129,16 @@
                 <h4 class="modal-title" id="myModalLabel">Набор услуг</h4>
             </div>
             <div class="modal-body">
-                <table st-table="serviceTable" class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Название</th>
-                        <th>Стоимость (руб.)</th>
-                        <th>Продолжительность</th>
-                        <th>Выбрано</th>
+                <table ng-table="serviceTable" class="table table-condensed">
+                    <tr class="table-tr-selectable"
+                        ng-repeat="row in $data"
+                        ng-click="selectService(row)"
+                        ng-class="{ 'selected-launch-items': row.$selected }">
+                        <td data-title="'Услуга'" sortable="'name'">{{row.name}}</td>
+                        <td data-title="'Стоимость'" sortable="'min_cost'">{{row.min_cost}} - {{row.max_cost}}</td>
+                        <td data-title="'Время ожидания'" sortable="'min_duration'">{{row.min_duration}} - {{row.max_duration}}</td>
+                        <td data-title="'Выбрано'"><span ng-show="row.$selected" class="text-success glyphicon glyphicon-ok" aria-hidden="true"></span></td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="row in serviceTable">
-                        <td>{{row.name}}</td>
-                        <td>{{row.min_cost}} - {{row.max_cost}}</td>
-                        <td>{{row.min_duration}} - {{row.max_duration}}</td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <td colspan="4" class="text-center" st-pagination="" st-items-by-page="10">
-                        </td>
-                    </tr>
-                    </tfoot>
                 </table>
             </div>
             <div class="modal-footer">

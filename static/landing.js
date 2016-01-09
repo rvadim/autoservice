@@ -1,7 +1,7 @@
 'use strict';
 
 var app = angular.module('AutoService.Landing', [
-    'smart-table',
+    'ngTable',
     'AutoServiceAPI'
 ]);
 
@@ -12,28 +12,40 @@ app.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 
-app.controller('LandingController', ['$scope', 'Service',
-    function ($scope, Service) {
-        $scope.selectedServices = 'Услуги пока не выбраны...';
-        $scope.serviceTable = [];
+app.controller('LandingController', ['$scope', 'Service', 'NgTableParams',
+    function ($scope, Service, NgTableParams) {
+        $scope.selectedServices = [];
+
+         function isServiceSelected(service) {
+            var out = _.find($scope.selectedServices, function (item) {
+                return item.id === service.id;
+            });
+            if (out) { return true; } else {return false; }
+         }
+
+         function addServiceToSelected(item) {
+            $scope.selectedServices.push(item);
+         }
+
+         function removeServiceFromSelected(item) {
+            $scope.selectedServices.splice($scope.selectedServices.indexOf(item), 1);
+         }
+
         Service.query().$promise.then(function(response) {
-            $scope.serviceTable = response;
-            //tableState.pagination.numberOfPages = response.length; //set the number of pages so the pagination can update
+            $scope.serviceTable = new NgTableParams({count: 10}, {
+                counts: [],
+                dataset: response
+            });
         });
 
         $scope.selectService = function (item) {
-            item.$selected = !item.$selected;
+            if (isServiceSelected(item)) {
+                removeServiceFromSelected(item);
+                item.$selected = false;
+            } else {
+                addServiceToSelected(item);
+                item.$selected = true;
+            }
         };
-
-        $scope.updateSelected = function () {
-            $scope.selectedServices = 'Выбраны услуги: ';
-            var output = [];
-            _.each($scope.servicesTable.data, function (service) {
-                if (service.$selected) {
-                    output.push(service.name);
-                }
-            });
-            $scope.selectedServices += output.join();
-        }
     }
 ]);

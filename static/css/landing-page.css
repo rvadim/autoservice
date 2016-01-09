@@ -192,3 +192,7 @@ p.copyright {
 .selected-launch-items {
     background-color: #efe;
 }
+
+.table-tr-selectable {
+    cursor: pointer;
+}
