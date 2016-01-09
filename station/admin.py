@@ -30,4 +30,5 @@ class ClientAdmin(admin.ModelAdmin):
 
 @admin.register(Job)
 class JobAdmin(admin.ModelAdmin):
-    list_display = ('client', 'service', 'date_time', 'approved', 'completed')
+    list_display = ('client', 'get_services', 'date_time', 'approved',
+                    'completed')

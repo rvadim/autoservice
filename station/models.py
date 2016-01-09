@@ -68,15 +68,34 @@ class Client(models.Model):
 
 class Job(models.Model):
     client = models.ForeignKey('Client')
-    service = models.ForeignKey('Service')
+    services = models.ManyToManyField('Service')
     stand = models.ForeignKey('Stand')
     date_time = models.DateTimeField(_('Arrival time'))
     approved = models.BooleanField(_('Approved'), default=False)
     completed = models.BooleanField(_('Completed'), default=False)
 
     def __str__(self):
-        return '{}, {}, {}'.format(self.client, self.service, self.date_time)
+        return '{}, {}, {}'.format(self.client, self.services, self.date_time)
+
+    def get_services(self):
+        return ','.join([service.name for service in self.services.all()])
 
     class Meta:
         verbose_name = _('Job')
         verbose_name_plural = _('Jobs')
+
+
+def generate_services(count):
+    import random
+    import string
+    from datetime import timedelta
+    for i in range(0, count):
+        service = Service()
+        service.name = ''.join(random.SystemRandom().choice(
+            string.ascii_uppercase + string.digits) for _ in range(16))
+        service.min_cost = random.randint(100, 500)
+        service.max_cost = random.randint(500, 5000)
+        service.min_duration = timedelta(seconds=random.randint(600, 1200))
+        service.max_duration = timedelta(seconds=random.randint(1200, 60000))
+        service.save()
+

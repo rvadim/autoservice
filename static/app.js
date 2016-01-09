@@ -3,16 +3,16 @@
 var app = angular.module('AutoService', [
     'angular-loading-bar',
     'ngRoute',
-    'AutoService.Landing'
+    'AutoService.Landing',
+    'AutoServiceAPI'
 ]);
 
-app.config(['$routeProvider',
-           function ($routeProvider) {
-    $routeProvider.otherwise({ redirectTo: '/landing' });
-    //$resourceProvider.defaults.stripTrailingSlashes = false;
-    // Allow pass cookie session to backend
-    //$httpProvider.defaults.withCredentials = true;
-}]);
+app.config(['$routeProvider', '$resourceProvider',
+    function ($routeProvider, $resourceProvider) {
+        $routeProvider.otherwise({ redirectTo: '/landing' });
+        $resourceProvider.defaults.stripTrailingSlashes = false;
+    }
+]);
 
 app.directive('loadingContainer', function () {
     return {

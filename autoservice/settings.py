@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get(
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-env_debug = os.environ.get('DEBUG', 'False')
+env_debug = os.environ.get('DEBUG', 'True')
 DEBUG = True if env_debug == 'True' else False
 ALLOWED_HOSTS = ['localhost']
 
@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'station',
+    'rest_framework'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -123,7 +124,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_URL = os.environ.get('STATIC_URL', '/static/')
-STATIC_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+STATIC_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..',
                            os.environ.get('STATIC_ROOT', 'static'))
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 

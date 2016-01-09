@@ -1,2 +1,10 @@
-# autosesrvice
+# AutoService
 Software for auto services
+
+## TODO
+ * Модель записи должна поддерживать много услуг (+)
+ * Rest API (+)
+ * Необходимо впилить multiselect
+ * Необходимо впилить аклендарь
+ * Допилить UI
+ * Модель должна учитывать работников?
