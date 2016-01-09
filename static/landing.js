@@ -15,8 +15,11 @@ app.config(['$routeProvider', function ($routeProvider) {
 app.controller('LandingController', ['$scope', 'Service', 'NgTableParams',
     function ($scope, Service, NgTableParams) {
         var weekdays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Cб', 'Вc'];
+        $scope.selectedServices = [];
         $scope.week = getWeek();
         $scope.times = getTimes();
+        $scope.day = null;
+        $scope.time = null;
 
         function getTimes() {
             var output = [];
@@ -39,15 +42,12 @@ app.controller('LandingController', ['$scope', 'Service', 'NgTableParams',
             return week;
         }
 
-
-        $scope.selectedServices = [];
-
-         function isServiceSelected(service) {
+        function isServiceSelected(service) {
             var out = _.find($scope.selectedServices, function (item) {
                 return item.id === service.id;
             });
             if (out) { return true; } else { return false; }
-         }
+        }
 
          function addServiceToSelected(item) {
             $scope.selectedServices.push(item);
@@ -64,6 +64,8 @@ app.controller('LandingController', ['$scope', 'Service', 'NgTableParams',
             });
         });
 
+        // EventHandlers
+
         $scope.selectService = function (item) {
             if (isServiceSelected(item)) {
                 removeServiceFromSelected(item);
@@ -73,5 +75,22 @@ app.controller('LandingController', ['$scope', 'Service', 'NgTableParams',
                 item.$selected = true;
             }
         };
+
+        $scope.selectTime = function (day, time) {
+            $scope.day = day;
+            $scope.time = time;
+        };
+
+        $scope.phoneNumberPattern = (function() {
+            return {
+                test: function(value) {
+                    console.log(value);
+                    if( $scope.requireTel === false ) {
+                        return true;
+                    }
+                    return regexp.test(value);
+                }
+            };
+        })();
     }
 ]);

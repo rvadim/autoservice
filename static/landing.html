@@ -80,7 +80,7 @@
                     <tbody>
                         <tr>
                             <td ng-repeat="day in week">
-                                <div ng-if="day.getDay() !== 0" ng-repeat="time in times" class="time-marker alert alert-success">{{ time }}</div>
+                                <div ng-if="day.getDay() !== 0" ng-repeat="time in times" class="btn btn-xs btn-success" ng-click="selectTime(day, time)">{{ time }}</div>
                             </td>
                         </tr>
                     </tbody>
@@ -99,8 +99,26 @@
             <div class="col-lg-5 col-sm-6">
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
-                <h2 class="section-heading">Укажите на какой номер <br>вам перезвонить</h2>
-                <p class="lead">This template features the 'Lato' font, part of the <a target="_blank" href="http://www.google.com/fonts">Google Web Font library</a>, as well as <a target="_blank" href="http://fontawesome.io">icons from Font Awesome</a>.</p>
+                <h2 class="section-heading">Укажите дополнительные данные</h2>
+                <form class="form-horizontal" name="form">
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input-mark" placeholder="Марка авто" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input-model" placeholder="Модель авто" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <input name="phone" phone type="text" class="form-control" placeholder="Телефон" ng-model="client.phone"><br />
+                            <span ng-show="form.phone.$pending.phone">Checking if this name is available...</span>
+                            <span ng-show="form.phone.$error.phone">Телефон должен быть 0-000-000-00-00</span>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                 <!--img class="img-responsive" src="img/phones.png" alt=""-->

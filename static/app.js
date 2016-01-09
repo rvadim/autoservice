@@ -3,6 +3,7 @@
 var app = angular.module('AutoService', [
     'angular-loading-bar',
     'ngRoute',
+    'ngMessages',
     'AutoService.Landing',
     'AutoServiceAPI'
 ]);
@@ -27,4 +28,31 @@ app.directive('loadingContainer', function () {
             });
         }
     };
-})
+});
+
+var phoneRegexp = /^\(?(\d{3})\)?[ .-]?(\d{3})[ .-]?(\d{4})$/;
+app.directive('phone', function($q, $timeout) {
+  return {
+    require: 'ngModel',
+    link: function(scope, elm, attrs, ctrl) {
+      ctrl.$asyncValidators.phone = function(modelValue, viewValue) {
+        if (ctrl.$isEmpty(modelValue)) {
+          // consider empty model valid
+          return $q.when();
+        }
+        var def = $q.defer();
+        $timeout(function() {
+          // Mock a delayed response
+          if (phoneRegexp.test(modelValue)) {
+            def.resolve();
+          } else {
+            def.reject();
+          }
+
+        }, 1000);
+
+        return def.promise;
+      };
+    }
+  };
+});
