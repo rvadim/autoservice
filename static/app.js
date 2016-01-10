@@ -8,10 +8,12 @@ var app = angular.module('AutoService', [
     'AutoServiceAPI'
 ]);
 
-app.config(['$routeProvider', '$resourceProvider',
-    function ($routeProvider, $resourceProvider) {
+app.config(['$routeProvider', '$resourceProvider', '$httpProvider',
+    function ($routeProvider, $resourceProvider, $httpProvider) {
         $routeProvider.otherwise({ redirectTo: '/landing' });
         $resourceProvider.defaults.stripTrailingSlashes = false;
+        $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+        $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
     }
 ]);
 

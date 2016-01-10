@@ -285,7 +285,14 @@
             <div class="col-lg-6">
                 <ul class="list-inline banner-social-buttons">
                     <li>
-                        <button class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Записаться</button>
+                        <button class="btn btn-primary btn-lg"
+                                ng-class="{'disabled': form.$invalid }"
+                                ng-click="sendServiceRequest()">
+                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span> Записаться
+                        </button>
+                    </li>
+                    <li ng-show="form.$invalid">
+                        <div class="alert alert-danger" role="alert">Не все данные заполнены</div>
                     </li>
                 </ul>
             </div>

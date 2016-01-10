@@ -12,9 +12,8 @@ app.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 
-app.controller('LandingController', ['$scope', 'Service', 'NgTableParams',
-    function ($scope, Service, NgTableParams) {
-        var weekdays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Cб', 'Вc'];
+app.controller('LandingController', ['$scope', 'Service', 'Job', 'NgTableParams',
+    function ($scope, Service, Job, NgTableParams) {
         $scope.selectedServices = [];
         $scope.week = getWeek();
         $scope.times = getTimes();
@@ -80,5 +79,29 @@ app.controller('LandingController', ['$scope', 'Service', 'NgTableParams',
             $scope.day = day;
             $scope.time = time;
         };
+
+        $scope.sendServiceRequest = function () {
+            var arr = $scope.time.split(':');
+            var job = new Job();
+            job.client = $scope.client;
+            $scope.day.setHours(arr[0]);
+            $scope.day.setMinutes(arr[1]);
+            console.log($scope.day);
+            job.date = $scope.day;
+            job.selected_services = $scope.selectedServices;
+            Job.save({}, job,
+                function (result) {
+                    console.log(result);
+                },
+                function (result) {
+                    console.log(result);
+                }
+            );
+            /*
+            if ($scope.form.$invalid) {
+                console.log('Form is invalid')
+            }
+            */
+        }
     }
 ]);

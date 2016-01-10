@@ -16,6 +16,12 @@ services.factory('Station', ['$resource',
             query: { method:'GET', isArray: true }
         });
     }
+]).factory('Job', ['$resource',
+    function ($resource) {
+        return $resource(API_PATH + 'job/', {}, {
+            save: { method: 'POST' }
+        });
+    }
 ]);
 
 
