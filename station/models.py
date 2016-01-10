@@ -55,6 +55,7 @@ class Service(models.Model):
 
 class Client(models.Model):
     user = models.ForeignKey(User)
+    car = models.ForeignKey('Car', default=0)
     phone = models.CharField(_('Cell phone'), max_length=12)
 
     def __str__(self):
@@ -83,6 +84,11 @@ class Job(models.Model):
     class Meta:
         verbose_name = _('Job')
         verbose_name_plural = _('Jobs')
+
+
+class Car(models.Model):
+    manufacturer = models.TextField(_('Manufacturer'), max_length=128)
+    model = models.TextField(_('Model'), max_length=128)
 
 
 def generate_services(count):

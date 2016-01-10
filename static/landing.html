@@ -87,7 +87,7 @@
                 </table>
             </div>
             <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                <!--img class="img-responsive" src="img/dog.png" alt=""-->
+                <img class="img-responsive" src="/static/photos/subaru-h6.jpg" alt="">
             </div>
         </div>
     </div>
@@ -100,28 +100,176 @@
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
                 <h2 class="section-heading">Укажите дополнительные данные</h2>
+                <p>Пожалуйста укажите модель вашего автомобиля и номер телефона, чтобы мы могли вам перезвонить о подтвеждении</p>
                 <form class="form-horizontal" name="form">
                     <div class="form-group">
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-mark" placeholder="Марка авто" required>
+                        <div class="col-sm-10 has-feedback"
+                             ng-class="{'has-error': form.manufacturer.$error.required,
+                                        'has-success': !form.manufacturer.$error.required }">
+                            <select required
+                                    class="form-control"
+                                    name="manufacturer"
+                                    ng-model="client.car.manufacturer">
+                                <option class="bold" value="Toyota">Toyota</option>
+                                <option class="bold" value="Лада">Лада</option>
+                                <option class="bold" value="Nissan">Nissan</option>
+                                <option class="bold" value="Honda">Honda</option>
+                                <option class="bold" value="Mitsubishi">Mitsubishi</option>
+                                <option value="AC">AC</option>
+                                <option value="Acura">Acura</option>
+                                <option value="Alfa Romeo">Alfa Romeo</option>
+                                <option value="Alpina">Alpina</option>
+                                <option value="Asia">Asia</option>
+                                <option value="Aston Martin">Aston Martin</option>
+                                <option value="Audi">Audi</option>
+                                <option value="Bentley">Bentley</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Brilliance">Brilliance</option>
+                                <option value="Bugatti">Bugatti</option>
+                                <option value="Buick">Buick</option>
+                                <option value="BYD">BYD</option>
+                                <option value="Cadillac">Cadillac</option>
+                                <option value="Changan">Changan</option>
+                                <option value="Chery">Chery</option>
+                                <option value="Chevrolet">Chevrolet</option>
+                                <option value="Chrysler">Chrysler</option>
+                                <option value="Citroen">Citroen</option>
+                                <option value="Dacia">Dacia</option>
+                                <option value="Daewoo">Daewoo</option>
+                                <option value="Daihatsu">Daihatsu</option>
+                                <option value="Daimler">Daimler</option>
+                                <option value="Datsun">Datsun</option>
+                                <option value="DeLorean">DeLorean</option>
+                                <option value="Derways">Derways</option>
+                                <option value="Dodge">Dodge</option>
+                                <option value="Dongfeng">Dongfeng</option>
+                                <option value="Eagle">Eagle</option>
+                                <option value="FAW">FAW</option>
+                                <option value="Ferrari">Ferrari</option>
+                                <option value="Fiat">Fiat</option>
+                                <option value="Fisker">Fisker</option>
+                                <option value="Ford">Ford</option>
+                                <option value="Geely">Geely</option>
+                                <option value="Genesis">Genesis</option>
+                                <option value="Geo">Geo</option>
+                                <option value="GMC">GMC</option>
+                                <option value="Great Wall">Great Wall</option>
+                                <option value="Hafei">Hafei</option>
+                                <option value="Haima">Haima</option>
+                                <option value="Haval">Haval</option>
+                                <option value="Hawtai">Hawtai</option>
+                                <option value="Honda">Honda</option>
+                                <option value="Hummer">Hummer</option>
+                                <option value="Hyundai">Hyundai</option>
+                                <option value="Infiniti">Infiniti</option>
+                                <option value="Iran Khodro">Iran Khodro</option>
+                                <option value="Isuzu">Isuzu</option>
+                                <option value="JAC">JAC</option>
+                                <option value="Jaguar">Jaguar</option>
+                                <option value="Jeep">Jeep</option>
+                                <option value="Kia">Kia</option>
+                                <option value="Koenigsegg">Koenigsegg</option>
+                                <option value="Lamborghini">Lamborghini</option>
+                                <option value="Lancia">Lancia</option>
+                                <option value="Land Rover">Land Rover</option>
+                                <option value="Lexus">Lexus</option>
+                                <option value="Lifan">Lifan</option>
+                                <option value="Lincoln">Lincoln</option>
+                                <option value="Lotus">Lotus</option>
+                                <option value="Luxgen">Luxgen</option>
+                                <option value="Maserati">Maserati</option>
+                                <option value="Maybach">Maybach</option>
+                                <option value="Mazda">Mazda</option>
+                                <option value="McLaren">McLaren</option>
+                                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                <option value="Mercury">Mercury</option>
+                                <option value="Mini">Mini</option>
+                                <option value="Mitsubishi">Mitsubishi</option>
+                                <option value="Mitsuoka">Mitsuoka</option>
+                                <option value="Nissan">Nissan</option>
+                                <option value="Oldsmobile">Oldsmobile</option>
+                                <option value="Opel">Opel</option>
+                                <option value="Pagani">Pagani</option>
+                                <option value="Peugeot">Peugeot</option>
+                                <option value="Plymouth">Plymouth</option>
+                                <option value="Pontiac">Pontiac</option>
+                                <option value="Porsche">Porsche</option>
+                                <option value="Proton">Proton</option>
+                                <option value="Ravon">Ravon</option>
+                                <option value="Renault">Renault</option>
+                                <option value="Renault Samsung">Renault Samsung</option>
+                                <option value="Rolls-Royce">Rolls-Royce</option>
+                                <option value="Rover">Rover</option>
+                                <option value="Saab">Saab</option>
+                                <option value="Saturn">Saturn</option>
+                                <option value="Scion">Scion</option>
+                                <option value="SEAT">SEAT</option>
+                                <option value="Skoda">Skoda</option>
+                                <option value="Smart">Smart</option>
+                                <option value="SsangYong">SsangYong</option>
+                                <option value="Subaru">Subaru</option>
+                                <option value="Suzuki">Suzuki</option>
+                                <option value="Tesla">Tesla</option>
+                                <option value="Tianye">Tianye</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="TVR">TVR</option>
+                                <option value="Volkswagen">Volkswagen</option>
+                                <option value="Volvo">Volvo</option>
+                                <option value="Vortex">Vortex</option>
+                                <option value="Wiesmann">Wiesmann</option>
+                                <option value="Xin Kai">Xin Kai</option>
+                                <option value="ZX">ZX</option>
+                                <option value="ГАЗ">ГАЗ</option>
+                                <option value="ЗАЗ">ЗАЗ</option>
+                                <option value="ИЖ">ИЖ</option>
+                                <option value="Лада">Лада</option>
+                                <option value="ЛуАЗ">ЛуАЗ</option>
+                                <option value="Москвич">Москвич</option>
+                                <option value="Прочие авто">Прочие авто</option>
+                                <option value="ТагАЗ">ТагАЗ</option>
+                                <option value="УАЗ">УАЗ</option>
+                            </select>
+                            <span ng-show="form.manufacturer.$error.required" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                            <span ng-show="!form.manufacturer.$error.required" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                            <span class="help-block" ng-show="form.manufacturer.$error.required">Выберете пожалуйста производителя</span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group has-feedback"
+                         ng-class="{'has-error': form.model.$error.required,
+                                    'has-success': !form.model.$error.required }">
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-model" placeholder="Модель авто" required>
+                            <input required
+                                   name="model"
+                                   type="text"
+                                   class="form-control"
+                                   placeholder="Модель авто"
+                                   ng-model="client.car.model">
+                            <span ng-show="form.model.$error.required" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                            <span ng-show="!form.model.$error.required" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                            <span class="help-block" ng-show="form.model.$error.required">Введите пожалуйста модель вашего автомобиля</span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group has-feedback"
+                         ng-class="{'has-error': form.phone.$error.phone || form.phone.$error.required,
+                                    'has-success': !form.phone.$error.phone && !form.phone.$error.required }">
                         <div class="col-sm-10">
-                            <input name="phone" phone type="text" class="form-control" placeholder="Телефон" ng-model="client.phone"><br />
-                            <span ng-show="form.phone.$pending.phone">Checking if this name is available...</span>
-                            <span ng-show="form.phone.$error.phone">Телефон должен быть 0-000-000-00-00</span>
+                            <input phone
+                                   required
+                                   name="phone"
+                                   type="text"
+                                   class="form-control"
+                                   placeholder="Телефон"
+                                   ng-model="client.phone">
+                            <span ng-show="form.phone.$error.phone || form.phone.$error.required" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                            <span ng-show="!form.phone.$error.phone && !form.phone.$error.required" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                            <span class="help-block" ng-show="form.phone.$error.phone">Телефон должен быть в формате 8 000 000 0000</span>
+                            <span class="help-block" ng-show="form.phone.$error.required">Введите пожалуйста номер своего телефона</span>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <!--img class="img-responsive" src="img/phones.png" alt=""-->
+                <img class="img-responsive" src="/static/photos/car-brands.png" alt="">
             </div>
         </div>
     </div>
@@ -132,18 +280,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h2>Connect to Start Bootstrap:</h2>
+                <h2>Мы вам перезвоним</h2>
             </div>
             <div class="col-lg-6">
                 <ul class="list-inline banner-social-buttons">
                     <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                        <button class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Записаться</button>
                     </li>
                 </ul>
             </div>
@@ -189,18 +331,18 @@
                     </li>
                     <li class="footer-menu-divider">&sdot;</li>
                     <li>
-                        <a href="#about">About</a>
+                        <a href="#about">О нас</a>
                     </li>
                     <li class="footer-menu-divider">&sdot;</li>
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="#services">Услуги</a>
                     </li>
                     <li class="footer-menu-divider">&sdot;</li>
                     <li>
-                        <a href="#contact">Contact</a>
+                        <a href="#contact">Контакты</a>
                     </li>
                 </ul>
-                <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                <p class="copyright text-muted small">Copyright &copy; Car clinic 2016. All Rights Reserved</p>
             </div>
         </div>
     </div>

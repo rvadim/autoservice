@@ -80,17 +80,5 @@ app.controller('LandingController', ['$scope', 'Service', 'NgTableParams',
             $scope.day = day;
             $scope.time = time;
         };
-
-        $scope.phoneNumberPattern = (function() {
-            return {
-                test: function(value) {
-                    console.log(value);
-                    if( $scope.requireTel === false ) {
-                        return true;
-                    }
-                    return regexp.test(value);
-                }
-            };
-        })();
     }
 ]);
