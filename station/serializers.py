@@ -32,4 +32,4 @@ class ServiceSerializer(serializers.ModelSerializer):
 class JobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
-        fields = ('id', 'date_time', 'stand')
+        fields = ('id', 'date_time', 'stand', 'client', 'services')

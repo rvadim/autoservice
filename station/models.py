@@ -1,3 +1,5 @@
+import random
+import string
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
@@ -76,7 +78,8 @@ class Job(models.Model):
     completed = models.BooleanField(_('Completed'), default=False)
 
     def __str__(self):
-        return '{}, {}, {}'.format(self.client, self.services, self.date_time)
+        return '{}, {}, {}'.format(self.client, self.get_services(),
+                                   self.date_time)
 
     def get_services(self):
         return ','.join([service.name for service in self.services.all()])
@@ -91,14 +94,16 @@ class Car(models.Model):
     model = models.TextField(_('Model'), max_length=128)
 
 
+def generate_username(length=16):
+    return ''.join(random.SystemRandom().choice(
+            string.ascii_uppercase + string.digits) for _ in range(length))
+
+
 def generate_services(count):
-    import random
-    import string
     from datetime import timedelta
     for i in range(0, count):
         service = Service()
-        service.name = ''.join(random.SystemRandom().choice(
-            string.ascii_uppercase + string.digits) for _ in range(16))
+        service.name = generate_username()
         service.min_cost = random.randint(100, 500)
         service.max_cost = random.randint(500, 5000)
         service.min_duration = timedelta(seconds=random.randint(600, 1200))
